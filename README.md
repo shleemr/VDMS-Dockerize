@@ -1,5 +1,4 @@
-#  VDMS (방역차량관제) 프로젝트를 docker 통해 자동화 할 수 있다
-
+#  VDMS (방역차량관제) 프로젝트를 docker 통해 자동화 할 수 있다. 잘 작성된 [Dockerfile](./Dockerfile) 만 있다면 ..
 ## Docker를 사용할 때 알아야 하는 개념들
 
 ##### 1. Docker 란?
