@@ -29,7 +29,7 @@
 ## 어떻게 VDMS(차량방역관제시스템) 프로젝트를 자동화 할 수 있나?
 
 ##### VDMS 구조
-VDMS 는 linux(Ubuntu) 운영체제 위에 python 을 설치하고 더하여 python용 opencv 와 gRPC 를 설치하여 python 서버 스크립트를 실행하도록 구현되었습니다. 일단 버전에 맞는 python docker image 를 base 로 합니다. python base image 만으로 단독의 컨테이너를 실행할 수 있습니다. 그 위에 opencv 와 gRPC 를 설치하고 image 를 빌드하여 사용할 수 있습니다. gRPC protobuf 파일은 빌드시에 컴파일하여 클래스 파일을 생성합니다.
+> VDMS 는 linux(Ubuntu) 운영체제 위에 python 을 설치하고 더하여 python용 opencv 와 gRPC 를 설치하여 python 서버 스크립트를 실행하도록 구현되었습니다. 일단 버전에 맞는 python docker image 를 base 로 합니다. python base image 만으로 단독의 컨테이너를 실행할 수 있습니다. 그 위에 opencv 와 gRPC 를 설치하고 image 를 빌드하여 사용할 수 있습니다. gRPC protobuf 파일은 빌드시에 컴파일하여 클래스 파일을 생성합니다.
 
 ##### Dockerfile 작성 (미리 작성해 본 [Dockerfile](./Dockerfile) 참고)
 1. python:3.6 이미지를 base 이미지로 사용합니다. (Dockerfile 라인 #1)
@@ -46,4 +46,4 @@ VDMS 는 linux(Ubuntu) 운영체제 위에 python 을 설치하고 더하여 pyt
     $ docker container run -it -p 80:80 vdms
     ```
 
-##### 빌드한 이미지는 Docker Hub 나 개인 저장소에서 관리하며 필요할 때마다 간편하게 컨테이너로 실행할 수 있습니다.
+> 빌드한 이미지는 Docker Hub 나 개인 저장소에서 관리하며 필요할 때마다 간편하게 컨테이너로 실행할 수 있습니다.
