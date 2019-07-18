@@ -28,8 +28,6 @@ ARG CUBLAS=OFF
 # Include OpenCL Runtime support
 ARG OPENCL=OFF
 
-
-
 # Include OpenCL Shared Virtual Memory support" OFF ) experimental
 ARG OPENCL_SVM=OFF
 
@@ -47,11 +45,13 @@ ARG INTELPERC=OFF
 
 ARG PREFIX=/usr/local
 
+
 # OpenCV version
 ARG VERSION=3.2.0
 
 ARG PYTHON_BIN=/usr/local/bin/python
 ARG PYTHON_LIB=/usr/local/lib/libpython3.so
+
 
 # gRPC ARGs
 ARG PROTOC_VERSION=3.6.1
