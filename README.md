@@ -29,4 +29,22 @@
 * [Dockerfile](./Dockerfile) 은 컨테이너 내부 환경을 정의하고 Docker image 외부 리소스와의 맵핑정보를 정의합니다. Dockerfile 에 정의된대로 Docker image 를 빌드할 수 있습니다. 빌드가 성공적으로 이루어진 이미지의 경우 Docker가 설치된 어디에서나 똑같이 실행될 것을 기대할 수 있습니다.
 
 
-### 어떻게 VDMS 프로젝트를 자동화 할 수 있나?
+### 어떻게 VDMS(차량방역관제시스템) 프로젝트를 자동화 할 수 있나?
+
+##### VDMS 구조
+VDMS 는 linux(Ubuntu) + opencv + python 을 사용합니다. 버전에 맞는 python docker image 를 base 로 하여 그 위에 opencv 를 설치하고 image 를 빌드하여 사용할 수 있습니다.
+
+##### Dockerfile 적용 (미리 작성해 본 [Dockerfile](./Dockerfile) 참고)
+1. python:3.6 이미지를 base 이미지로 사용합니다. (라인 #1)
+1. 실행해야 하는 python 스크립트를 이미지의 작업 디렉토리에 복사하도록 합니다. (라인 #57)
+1. python 패키지 매니져 pip 를 설치합니다. (라인 #89)
+1. opencv 를 설치합니다. (라인 #94)
+1. 필요한 프로그램들 설치를 완료한 후 필요한 python 스크립트를 실행합니다. (라인 #146)
+1. 이렇게 작성한 Dockerfile 을 build 명령을 통해 이미지로 빌드합니다.  
+    ```
+    $ docker build -t vdms-docker .
+    ```
+1. 만들어진 이미지를 컨테이너로 실행합니다.
+    ```
+    $ docker container run -it -p 80:80 vdms
+    ```
