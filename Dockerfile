@@ -53,6 +53,11 @@ ARG VERSION=3.2.0
 ARG PYTHON_BIN=/usr/local/bin/python
 ARG PYTHON_LIB=/usr/local/lib/libpython3.so
 
+# gRPC ARGs
+ARG PROTOC_VERSION=3.6.1
+ARG PROTOC_TARGET=linux-x86_64
+ARG ASSET_NAME=protoc-${PROTOC_VERSION}-${PROTOC_TARGET}.zip
+
 WORKDIR /
 
 # Copy source files to working directory
@@ -144,5 +149,26 @@ RUN curl --silent --location --location-trusted \
     && make install \
     && rm -rf /$VERSION.tar.gz /opencv-$VERSION
 
+
+# gRPC
+# create a virtual env
+RUN python -m venv env
+
+# install all requirements
+RUN env/bin/pip install protobuf grpcio
+
+RUN python \
+    -m grpc_tools.protoc \
+    --python_out=out \
+    --grpc_python_out=out \
+    --proto_path=. \
+    vdmsprotofile.proto
+
+RUN apt-get -qy update && apt-get -qy install python wget unzip && rm -rf /var/lib/apt/lists/*
+RUN echo "${PROTOC_VERSION}/${ASSET_NAME}"
+RUN wget https://github.com/google/protobuf/releases/download/v${PROTOC_VERSION}/protoc-${PROTOC_VERSION}-${PROTOC_TARGET}.zip && \
+unzip ${ASSET_NAME} -d protoc && rm ${ASSET_NAME}
+
+
 #RUN server2.py
-CMD [ "python", "./server2.py" ]
+CMD ["python", "./server2.py"]
