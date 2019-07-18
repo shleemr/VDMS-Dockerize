@@ -1,5 +1,5 @@
 FROM python:3.6
-MAINTAINER Sean Lee <seancraft79@gmail.com>
+MAINTAINER Sean Lee <shlee@metarobotics.com>
 
 ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
