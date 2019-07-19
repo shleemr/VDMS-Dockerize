@@ -1,4 +1,4 @@
-#  VDMS (방역차량관제) 프로젝트를 docker 통해 자동화 할 수 있다. 잘 작성된 [Dockerfile](./DockerfileCode) 만 있다면 ..
+#  VDMS (방역차량관제) 프로젝트를 docker 통해 자동화 할 수 있다. 잘 작성된 [Dockerfile](./DockerfileCode.md) 만 있다면 ..
 ## Docker를 사용할 때 알아야 하는 개념들
 
 ##### 1. Docker 란?
@@ -21,7 +21,7 @@
 
 
 ##### 5. Dockerfile
-> [Dockerfile](./DockerfileCode) 은 컨테이너 내부 환경을 정의하고 Docker image 외부 리소스와의 맵핑정보를 정의합니다. Dockerfile 에 정의된대로 Docker image 를 빌드할 수 있습니다. 빌드가 성공적으로 이루어진 이미지의 경우 Docker가 설치된 어디에서나 똑같이 실행될 것을 기대할 수 있습니다.
+> [Dockerfile](./DockerfileCode.md) 은 컨테이너 내부 환경을 정의하고 Docker image 외부 리소스와의 맵핑정보를 정의합니다. Dockerfile 에 정의된대로 Docker image 를 빌드할 수 있습니다. 빌드가 성공적으로 이루어진 이미지의 경우 Docker가 설치된 어디에서나 똑같이 실행될 것을 기대할 수 있습니다.
 
 #
 
@@ -30,7 +30,7 @@
 ##### VDMS 구조
 > VDMS 는 linux(Ubuntu) 운영체제 위에 python 을 설치하고 더하여 python용 opencv 와 gRPC 를 설치하여 python 서버 스크립트를 실행하도록 구현되었습니다. 일단 버전에 맞는 python docker image 를 base 로 합니다. python base image 만으로 단독의 컨테이너를 실행할 수 있습니다. 그 위에 opencv 와 gRPC 를 설치하고 image 를 빌드하여 사용할 수 있습니다. gRPC protobuf 파일은 이미지 빌드시에 컴파일하여 클래스 파일을 생성합니다.
 
-##### Dockerfile 작성 (미리 작성해 본 [Dockerfile](./DockerfileCode) 참고)
+##### Dockerfile 작성 (미리 작성해 본 [Dockerfile](./DockerfileCode.md) 참고)
 1. python:3.6 이미지를 base 이미지로 사용합니다. (Dockerfile 라인 #1)
 1. 실행해야 하는 python 서버 스크립트와 이와 관련된 필요 파일들, gRPC proto 파일을 Docker image 의 작업 디렉토리에 복사하도록 설정합니다. (라인 #64)
 1. python 패키지 매니져 pip 를 설치합니다. (라인 #96)
